@@ -1,0 +1,21 @@
+/* Quiz.css */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000000;
+    padding: 2rem;
+}
+
+.quiz-header {
+    font-size: 6rem;
+    font-family: 'Arial';
+    color: #f6f9fa;
+}
+
+canvas {
+    width: 350%;
+    height: 80vh; /* Ajusta según sea necesario */
+}

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Playwrite+CU:wght@100..400&display=swap');
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  background-color: #BFF4FF;
+}
+
+/* button {
+  padding: 10px 20px;
+  font-size: medium;
+  color: #fff;
+  background-color: #30c230;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+} */
