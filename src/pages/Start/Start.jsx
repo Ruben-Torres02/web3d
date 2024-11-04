@@ -3,7 +3,11 @@ import Button from "../../components/Button/Button"
 import ButtonLogOut from "../../components/ButtonLogOut/ButtonLogOut"
 import "./Start.css"
 import { Trash } from "../../components/Trash/Trash"
+import { useNavigate } from "react-router-dom"
 const Start = () =>{
+
+  const navigate = useNavigate()
+
     return (
         <>
         <ButtonLogOut />
@@ -18,7 +22,7 @@ const Start = () =>{
               <Button text={"Contaminacion"}/>
             </div>
             <div className="container-options-option">
-              <Button text={"Escasez"}/>
+              <Button text={"Escasez"} onClick={()=> navigate("/shortage")}/>
             </div>
             <div className="container-options-option">
               <Button text={"Acidificacion"}/>

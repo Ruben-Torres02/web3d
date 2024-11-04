@@ -5,6 +5,7 @@ import Home from '../pages/home/Home.jsx'
 import PublicRoute from './PublicRoute.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Start from '../pages/Start/Start.jsx';
+import Shortage from '../pages/shortage/Shortage.jsx';
 
 const Router = createBrowserRouter([
     {
@@ -38,7 +39,16 @@ const Router = createBrowserRouter([
            <Start/>
         </ProtectedRoute>
         )
+    },
+    {
+      path:'/shortage',
+      element:(
+        <ProtectedRoute>
+           <Shortage/>
+        </ProtectedRoute>
+        )
     }
+    
   ]);
 
 export default Router;
