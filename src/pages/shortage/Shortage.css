@@ -1,11 +1,11 @@
-.title-shortage{
-    color: rgb(160, 78, 11);
-    font-size: larger;
-    font-family: 'Arial';
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Para evitar barras de desplazamiento */
+    width: 100%;
+    height: 100%;
 }
 
-.intro-shortage{
-    color: black;
-    font-size: larger;
-    font-family: Arial;
+canvas {
+    display: block; /* Asegúrate de que el canvas ocupe el espacio completo */
 }
