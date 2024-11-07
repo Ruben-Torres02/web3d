@@ -15,9 +15,13 @@ const Start = () =>{
                 <Button text={"Contaminacion"}/>
               </Link>
             </div>
+
             <div className="container-options-option">
+              <Link to={"/shortage"}>
               <Button text={"Escasez"}/>
+              </Link>
             </div>
+
             <div className="container-options-option">
               <Button text={"Acidificacion"}/>
             </div>
