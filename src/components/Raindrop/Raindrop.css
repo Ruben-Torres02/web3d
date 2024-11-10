@@ -1,0 +1,87 @@
+
+
+.overlay{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.349);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay.close{
+    display: none;
+}
+.drop {
+    background-color: #0288d1;
+    height: 600px;
+    width: 600px;
+    border-radius: 0% 50% 50% 50%;
+    transform: rotate(45deg);
+    box-shadow: inset -25px 10px 0px -10px #03a9f4;
+    z-index: 1000;
+  }
+
+.drop-content{
+    width: 550px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(316deg) translateY(40px);
+    flex-direction: column;
+    color: white;
+    p{
+        width: 500px;
+        font-size: 20px;
+        margin: 0 0 20px 0;
+    }
+}
+
+.prev{
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.next{
+    right: -100px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.indicator{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot{
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.671);
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.dot.active{
+    background-color: #30c230;
+}
