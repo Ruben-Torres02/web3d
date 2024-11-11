@@ -8,12 +8,21 @@ const Lights = () => {
 
     return (
         <>
-            <ambientLight color={"#8f00ff"} intensity={1} />  {/* Ajusta la intensidad */}
+            <ambientLight color={"#8f00ff"} intensity={1} /> {/* Ajusta la luz ambiental */}
+            
             <directionalLight
+                //ref={directionalLightRef}
                 color={"yellow"}
-                position={[0, 5, 5]}
+                position={[0, 20, 30]} // Asegúrate de que la luz esté bien posicionada
                 intensity={5}
-                castShadow // Asegúrate de que se emiten sombras
+                castShadow
+                shadow-mapSize={[1024, 1024]}
+                shadow-camera-far={100} 
+                shadow-camera-left={-50} 
+                shadow-camera-right={50}
+                shadow-camera-top={50}
+                shadow-camera-bottom={-50}
+  
             />
         </>
     );
