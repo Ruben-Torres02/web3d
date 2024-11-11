@@ -15,7 +15,7 @@ function Modal({ text, onClose }) {
         <div className="modal">
             <div className="modal-content">
                 {text}
-                <button onClick={onClose}>Cerrar</button>
+                <button className="modal-content-button" onClick={onClose}>Cerrar</button>
             </div>
         </div>
     );

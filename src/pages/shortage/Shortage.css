@@ -42,7 +42,7 @@ canvas {
 }
 
 /* Botón de cierre del modal */
-button {
+.modal-content-button {
     margin-top: 200px;
     padding: 10px;
     border: none;
@@ -53,6 +53,6 @@ button {
 
 }
 
-button:hover {
+.modal-content-button:hover {
     background-color: #5209f1; /* Azul más oscuro al pasar el mouse */
 }
