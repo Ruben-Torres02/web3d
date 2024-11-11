@@ -1,11 +1,58 @@
-html, body {
+html, body #root {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Para evitar barras de desplazamiento */
     width: 100%;
     height: 100%;
+    position: fixed;
+    user-select: none;
 }
 
 canvas {
     display: block; /* Asegúrate de que el canvas ocupe el espacio completo */
+}
+
+/* Modal - Fondo semitransparente */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: visible; /* Asegúrate de que el modal sea visible */
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Contenido del modal - Fondo azul transparente */
+.modal-content {
+    background-color: rgba(104, 137, 244, 0.7); /* Fondo azul con transparencia */
+    padding: 5px;
+    border-radius: 10px;
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white; /* Color de texto blanco para contraste */
+    font-size: 20px; /* Aumentar tamaño de fuente si es necesario */
+}
+
+/* Botón de cierre del modal */
+button {
+    margin-top: 200px;
+    padding: 10px;
+    border: none;
+    background-color: #07b5ef; /* Azul oscuro */
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+button:hover {
+    background-color: #5209f1; /* Azul más oscuro al pasar el mouse */
 }

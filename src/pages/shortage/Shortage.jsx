@@ -1,68 +1,103 @@
-import "./Shortage.css";
+import "./Shortage.css";  // Asegúrate de importar el archivo CSS para el modal
 import { Canvas } from "@react-three/fiber";
-import { Model } from "../../components/desert1/Desert1";
-import { OrbitControls, Text, Text3D, Html } from "@react-three/drei";
+import { OrbitControls, Text3D } from "@react-three/drei";
 import Lights from "./Lights";
 import Staging from "./staging/Staging";
+import { Sign3D } from "../../components/Sign3D/Sign3D";
+import { useState } from "react";
+import { Model } from "../../components/desert2/Desert2";  // Aquí se importa el Model
+import ProblematicText from "./text/ProblematicText";
+import SensitizationText from "./text/SensitizationText";
+
+// Componente Modal para mostrar el cuadro de diálogo
+function Modal({ text, onClose }) {
+    return (
+        <div className="modal">
+            <div className="modal-content">
+                {text}
+                <button onClick={onClose}>Cerrar</button>
+            </div>
+        </div>
+    );
+}
 
 function Shortage() {
     const cameraSettings = {
-        position: [0, 5, 25], 
+        position: [9, 8.5, 25],
         fov: 94,
     };
 
+    // Estados para controlar la visibilidad del modal y el texto
+    const [showModal, setShowModal] = useState(false);
+    const [modalText, setModalText] = useState("");
+
+    // Función para manejar el clic en las señales y mostrar el modal
+    const handleSignClick = (text) => {
+        setModalText(text);  // Establece el texto del modal
+        setShowModal(true);   // Muestra el modal
+    };
+
+    // Función para cerrar el modal
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
     return (
-        <Canvas 
-            shadows 
-            camera={cameraSettings}
-            style={{ height: '100vh', width: '100vw' }} 
-        >
-            <OrbitControls />
-            <Staging />
-            <Lights />
-            <Model />
-
-            {/* Texto en 3D, con ajustes de posición */}
-            <Text
-                position={[-5, 1.5, 0.2]} // Aumenta la posición Y y Z
-                fontSize={0.8}
-                maxWidth={10}
-                lineHeight={1.1}
-                color="black"
-                anchorX="right"
-                anchorY="bottom"
+        <div>
+            <Canvas
+                shadows
+                camera={cameraSettings}
+                style={{ height: "100vh", width: "100vw" }}
             >
-                La falta de agua genera importantes problemas medioambientales. La disminución de ríos y de humedales agota el propio ecosistema, pone en peligro a la biodiversidad.
-            </Text>
+                <OrbitControls
 
-            <Text 
-                position={[15, 3, 0.2]} // Ajuste de posición
-                fontSize={0.8}
-                maxWidth={9}
-                lineHeight={1.1}
-                color="black"
-                anchorX="right"
-                anchorY="bottom"
-            >
-                El cuidado del agua en el presente significa asegurar un futuro en el que podemos disfrutar de tierras fértiles y biodiversidad.
-            </Text>
+                    minDistance={10}    // Limita el zoom mínimo
+                    maxDistance={27}    // Limita el zoom máximo
+                    maxPolarAngle={Math.PI / 2.5}  // Limita la rotación vertical hacia abajo
+                    minPolarAngle={Math.PI / 3.3}  // Limita la rotación vertical hacia arriba
+                    minAzimuthAngle={-Math.PI / 6}  // Limita la rotación horizontal a la izquierda
+                    maxAzimuthAngle={Math.PI / 6}   // Limita la rotación horizontal a la derecha
+                    enablePan={false}
 
-            {/* Título en 3D, con cambios en la posición */}
-            <Text3D
-                position={[-15, 10, 0.2]} // Ajusta la posición para que esté visible
-                font="fonts/blue-ocean.json"
-                bevelEnabled
-                bevelSize={0.02}
-                bevelThickness={1}
-                height={0.1}
-                lineHeight={0.75}
-                letterSpacing={0.1}
-                size={3}
-            >
-                Escasez de agua
-                <meshNormalMaterial attach="material" />
-            </Text3D>
-        </Canvas>
+                />
+                <Staging />
+                <Lights />
+                <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />  {/* Asegúrate de que el Model esté importado y se muestre correctamente */}
+
+                {/* Aquí es donde se manejan los clics para mostrar el modal */}
+                <Sign3D
+                    scale={0.3}
+                    position={[15, -0.5, 2]}
+                    text="Sensibilizacion"
+                    onClick={() => handleSignClick(<SensitizationText />)}
+                />
+                <Sign3D
+
+                    scale={0.3}
+                    position={[-10, -0.5, 2]}
+                    text="Problematica"
+                    onClick={() => handleSignClick(<ProblematicText />)}
+                />
+
+                <Text3D
+                    position={[-15, 13, 0.2]}
+                    font="fonts/blue-ocean.json"
+                    bevelEnabled
+                    bevelSize={0.02}
+                    bevelThickness={1}
+                    height={0.1}
+                    lineHeight={0.75}
+                    letterSpacing={0.1}
+                    size={3}
+                >
+                    Escasez de agua
+                    <meshNormalMaterial attach="material" />
+                </Text3D>
+            </Canvas>
+
+            {/* Mostrar el modal si showModal es verdadero */}
+            {showModal && <Modal text={modalText} onClose={closeModal} />}
+        </div>
     );
 }
 
