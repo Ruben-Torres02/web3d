@@ -1,44 +1,25 @@
 
 .title {
     font-size: 100pt;
-    color: #0aecce;
+    color: #30c230;
 }
 
 .intro {
-    font-size: large;
-    color:aliceblue;
+    font-weight: bold;
+    font-size: 20px;
+    color:white;
+    p{
+        width: 1000px;
+        backdrop-filter: blur(30px);
+        background-color: #46fa405e;
+        padding: 20px;
+        border-radius: 10px;
+    }
 }
 /* Estilo para el contenedor de los botones */
-.button-pollution,
-.button-shortage,
-.button-acidificacion {
+.buttons-container {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 10px;
+    /* flex-direction: column; */
+    gap: 20px;
 }
 
-/* Estilo para los botones */
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #09bede; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 200px; /* Ancho fijo para los botones */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Efecto al pasar el ratón por encima */
-button:hover {
-    background-color: #0015fc; /* Cambio de color de fondo */
-}
-
-/* Efecto de enfoque en el botón */
-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(72, 157, 91, 0.7); /* Sombra cuando está enfocado */
-}

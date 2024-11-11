@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import "./Start.css";
 import { Model } from "../../components/ocean/Ocean";
 import WelcomeText from "./welcomeText/WelcomeText";
+import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 
 const Start = () => {
   // Configuración de la cámara
@@ -13,7 +14,8 @@ const Start = () => {
   };
 
   return (
-    <div className="canvas-container">
+    <>
+      <ButtonGoBack/>
       <Canvas
         camera={cameraSettings}
         style={{ height: "100vh", width: "100vw" }}
@@ -35,7 +37,7 @@ const Start = () => {
           minPolarAngle={Math.PI / 4}  // Limita el ángulo vertical para evitar que la cámara vea hacia abajo
         />
       </Canvas>
-    </div>
+    </>
   );
 };
 

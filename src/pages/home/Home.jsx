@@ -33,9 +33,7 @@ const Home = () => {
   const handlelogout = useCallback(() => {
     logout();
   }, [logout]);
-  const navigate = useNavigate (
-
-  )
+  const navigate = useNavigate ()
   const handleNavigateStart = useCallback ( () => {
     navigate("/Start");
   }
