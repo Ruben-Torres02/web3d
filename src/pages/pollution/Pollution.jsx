@@ -1,11 +1,12 @@
 import "./Pollution.css"
 import { Canvas } from "@react-three/fiber";
 import { House3D } from "../../components/House3D/House3D";
-import { Loader, OrbitControls, Sky, Text } from "@react-three/drei";
+import { Html, Loader, OrbitControls, Sky, Text } from "@react-three/drei";
 import { Lapras3D } from "../../components/Lapras3D/Lapras3D";
 import { Sign3D } from "../../components/Sign3D/Sign3D";
 import Raindrop from "../../components/Raindrop/Raindrop";
 import { Suspense, useState } from "react";
+import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 
 const Pollution = () => {
 
@@ -33,6 +34,7 @@ const Pollution = () => {
 
   return (
     <>
+      <ButtonGoBack/>
       <Canvas shadows camera={cameraSettings}>
         <Sky
           distance={450000}
