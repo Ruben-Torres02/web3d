@@ -72,6 +72,9 @@ const Pollution = () => {
             minPolarAngle={Math.PI * 0.3}
             maxAzimuthAngle={Math.PI * 0.25}
             minAzimuthAngle={-Math.PI * 0.25}
+            maxDistance={5}
+            minDistance={5}
+            enablePan={false}
           />
         </Suspense>
       </Canvas>
