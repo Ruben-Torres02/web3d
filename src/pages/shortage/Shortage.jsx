@@ -93,7 +93,7 @@ function Shortage() {
                     letterSpacing={0.1}
                     size={3}
                 >
-                    Escasez de agua
+                    Escasez de agua.
                     <meshNormalMaterial attach="material" />
                 </Text3D>
             </Canvas>

@@ -1,17 +1,17 @@
 
 .title {
     font-size: 100pt;
-    color: #30c230;
+    color: #04ec04;
 }
 
 .intro {
     font-weight: bold;
     font-size: 20px;
-    color:white;
+    color:rgb(253, 253, 253);
     p{
         width: 1000px;
         backdrop-filter: blur(30px);
-        background-color: #0de9055e;
+        background-color: #3c493b5e;
         padding: 20px;
         border-radius: 10px;
     }
