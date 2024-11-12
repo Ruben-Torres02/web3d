@@ -9,7 +9,7 @@ import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 const Start = () => {
   // Configuración de la cámara
   const cameraSettings = {
-    position: [0, 185, 0],  // Posición de la cámara (ajustada para estar por debajo del modelo)
+    position: [0, 180, 0],  // Posición de la cámara (ajustada para estar por debajo del modelo)
     fov: 80,                 // Campo de visión
   };
 
