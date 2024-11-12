@@ -8,6 +8,8 @@ import { useState } from "react";
 import { Model } from "../../components/desert2/Desert2";  // Aquí se importa el Model
 import ProblematicText from "./text/ProblematicText";
 import SensitizationText from "./text/SensitizationText";
+import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
+
 
 // Componente Modal para mostrar el cuadro de diálogo
 function Modal({ text, onClose }) {
@@ -44,6 +46,7 @@ function Shortage() {
 
     return (
         <div>
+            <ButtonGoBack/>
             <Canvas
                 shadows
                 camera={cameraSettings}
