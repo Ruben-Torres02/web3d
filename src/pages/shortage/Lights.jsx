@@ -13,15 +13,17 @@ const Lights = () => {
             <directionalLight
                 //ref={directionalLightRef}
                 color={"yellow"}
-                position={[0, 20, 30]} // Asegúrate de que la luz esté bien posicionada
-                intensity={5}
+                position={[0, 15, 20]} // Asegúrate de que la luz esté bien posicionada
+                intensity={4}
                 castShadow
-                shadow-mapSize={[1024, 1024]}
-                shadow-camera-far={100} 
+                shadow-mapSize-with={2048}
+                shadow-mapSize-height={2048}
+                shadow-camera-far={50} 
                 shadow-camera-left={-50} 
                 shadow-camera-right={50}
                 shadow-camera-top={50}
                 shadow-camera-bottom={-50}
+                shadow-normalBias={0.1}
   
             />
         </>

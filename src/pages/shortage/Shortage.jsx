@@ -9,6 +9,7 @@ import { Model } from "../../components/desert2/Desert2";  // Aquí se importa e
 import ProblematicText from "./text/ProblematicText";
 import SensitizationText from "./text/SensitizationText";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
+import { Physics } from "@react-three/rapier";
 
 
 // Componente Modal para mostrar el cuadro de diálogo
@@ -46,7 +47,7 @@ function Shortage() {
 
     return (
         <div>
-            <ButtonGoBack/>
+            <ButtonGoBack />
             <Canvas
                 shadows
                 camera={cameraSettings}
@@ -65,22 +66,25 @@ function Shortage() {
                 />
                 <Staging />
                 <Lights />
-                <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />  {/* Asegúrate de que el Model esté importado y se muestre correctamente */}
+                <Physics debug>
+                    <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />
+                    <Sign3D
+                        scale={0.3}
+                        position={[15, -0.5, 2]}
+                        text="Sensibilizacion"
+                        onClick={() => handleSignClick(<SensitizationText />)}
+                    />
+                    <Sign3D
 
+                        scale={0.3}
+                        position={[-10, -0.5, 2]}
+                        text="Problematica"
+                        onClick={() => handleSignClick(<ProblematicText />)}
+                    />
+
+                </Physics>
                 {/* Aquí es donde se manejan los clics para mostrar el modal */}
-                <Sign3D
-                    scale={0.3}
-                    position={[15, -0.5, 2]}
-                    text="Sensibilizacion"
-                    onClick={() => handleSignClick(<SensitizationText />)}
-                />
-                <Sign3D
 
-                    scale={0.3}
-                    position={[-10, -0.5, 2]}
-                    text="Problematica"
-                    onClick={() => handleSignClick(<ProblematicText />)}
-                />
 
                 <Text3D
                     position={[-15, 13, 0.2]}
