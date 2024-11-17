@@ -1,18 +1,18 @@
-import "./Shortage.css";  // Asegúrate de importar el archivo CSS para el modal
+import "./Shortage.css";  
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text3D } from "@react-three/drei";
 import Lights from "./Lights";
 import Staging from "./staging/Staging";
 import { Sign3D } from "../../components/Sign3D/Sign3D";
 import { useState } from "react";
-import { Model } from "../../components/desert2/Desert2";  // Aquí se importa el Model
+import { Model } from "../../components/desert2/Desert2"; 
 import ProblematicText from "./text/ProblematicText";
 import SensitizationText from "./text/SensitizationText";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
+import Catus from "../../components/catus/Catus";
 
 
-// Componente Modal para mostrar el cuadro de diálogo
 function Modal({ text, onClose }) {
     return (
         <div className="modal">
@@ -30,17 +30,15 @@ function Shortage() {
         fov: 94,
     };
 
-    // Estados para controlar la visibilidad del modal y el texto
     const [showModal, setShowModal] = useState(false);
     const [modalText, setModalText] = useState("");
 
-    // Función para manejar el clic en las señales y mostrar el modal
+ 
     const handleSignClick = (text) => {
-        setModalText(text);  // Establece el texto del modal
-        setShowModal(true);   // Muestra el modal
+        setModalText(text); 
+        setShowModal(true);   
     };
 
-    // Función para cerrar el modal
     const closeModal = () => {
         setShowModal(false);
     };
@@ -55,12 +53,12 @@ function Shortage() {
             >
                 <OrbitControls
 
-                    minDistance={10}    // Limita el zoom mínimo
-                    maxDistance={27}    // Limita el zoom máximo
-                    maxPolarAngle={Math.PI / 2.5}  // Limita la rotación vertical hacia abajo
-                    minPolarAngle={Math.PI / 3.3}  // Limita la rotación vertical hacia arriba
-                    minAzimuthAngle={-Math.PI / 6}  // Limita la rotación horizontal a la izquierda
-                    maxAzimuthAngle={Math.PI / 6}   // Limita la rotación horizontal a la derecha
+                    minDistance={10}    
+                    maxDistance={27}   
+                    maxPolarAngle={Math.PI / 2.5}  
+                    minPolarAngle={Math.PI / 3.3} 
+                    minAzimuthAngle={-Math.PI / 6}  
+                    maxAzimuthAngle={Math.PI / 6}   
                     enablePan={false}
 
                 />
@@ -82,8 +80,10 @@ function Shortage() {
                         onClick={() => handleSignClick(<ProblematicText />)}
                     />
 
+                    <Catus position = {[2, 2, 2]}  scale = {0.2}/>
+
+
                 </Physics>
-                {/* Aquí es donde se manejan los clics para mostrar el modal */}
 
 
                 <Text3D
