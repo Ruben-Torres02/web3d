@@ -7,6 +7,7 @@ import { Sign3D } from "../../components/Sign3D/Sign3D";
 import Raindrop from "../../components/Raindrop/Raindrop";
 import { Suspense, useState } from "react";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
+import { Physics } from "@react-three/rapier";
 
 const Pollution = () => {
 
@@ -34,7 +35,7 @@ const Pollution = () => {
 
   return (
     <>
-      <ButtonGoBack/>
+      <ButtonGoBack />
       <Canvas shadows camera={cameraSettings}>
         <Sky
           distance={450000}
@@ -58,15 +59,19 @@ const Pollution = () => {
           shadow-normalBias={0.5}
         />
         <Suspense fallback={null}>
-          <Sign3D onClick={openSignModal} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} scale={0.02} position={[-1.6, -0.5, 2]} rotation={[0, 0, 0]} />
-          <Text
-            position={[-1.56, 0, 2.1]}
-            color={"black"}
-            fontSize={0.1}
-            fontWeight={"bold"}
-          >
-            {`Click Aqui`}
-          </Text>
+          <Physics>
+            <Sign3D onClick={openSignModal} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} scale={0.02} position={[-1.6, -0.5, 2]} rotation={[0, 0, 0]} />
+            <Text
+              position={[-1.56, 0, 2.1]}
+              color={"black"}
+              fontSize={0.1}
+              fontWeight={"bold"}
+            >
+
+              {`Click Aqui`}
+
+            </Text>
+          </Physics>
           <House3D scale={0.3} rotation={[0, 4.75, 0]} />
           <Lapras3D scale={0.005} position={[1, -0.5, 1]} rotation={[0, -0.5, 0]} />
           <OrbitControls
@@ -79,7 +84,7 @@ const Pollution = () => {
             enablePan={false}
           />
         </Suspense>
-      </Canvas>
+      </Canvas >
       <Loader />
       <Raindrop isOpen={isOpen} onClose={closeSignModal} />
     </>
