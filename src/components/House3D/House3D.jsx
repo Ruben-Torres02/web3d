@@ -1,23 +1,26 @@
 import { useGLTF } from '@react-three/drei'
+import { RigidBody } from '@react-three/rapier'
 
 export function House3D(props) {
   const { nodes, materials } = useGLTF('/models-3d/house.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[-2.804, -2.516, 1.813]} scale={[9.384, 1.016, 9.384]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cubo044_1.geometry}
-          material={materials.SUB}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Cubo044_2.geometry}
-          material={materials.Verde}
-        />
-      </group>
+      <RigidBody type="fixed">
+        <group position={[-2.804, -2.516, 1.813]} scale={[9.384, 1.016, 9.384]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cubo044_1.geometry}
+            material={materials.SUB}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Cubo044_2.geometry}
+            material={materials.Verde}
+          />
+        </group>
+      </RigidBody>
       <mesh
         castShadow
         receiveShadow
@@ -51,6 +54,7 @@ export function House3D(props) {
         rotation={[-Math.PI, 1.292, -Math.PI]}
         scale={[0.575, 0.488, 0.575]}
       />
+      <RigidBody type='fixed' colliders="trimesh">
       <mesh
         castShadow
         receiveShadow
@@ -60,6 +64,7 @@ export function House3D(props) {
         rotation={[0, 0.454, 0]}
         scale={[1.127, 0.921, 0.921]}
       />
+      </RigidBody>
       <mesh
         castShadow
         receiveShadow
@@ -750,6 +755,7 @@ export function House3D(props) {
         scale={[0.127, 0.681, 0.127]}
       />
     </group>
+
   )
 }
 
