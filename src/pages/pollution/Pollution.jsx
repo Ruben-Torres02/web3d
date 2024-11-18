@@ -1,15 +1,26 @@
 import "./Pollution.css"
 import { Canvas } from "@react-three/fiber";
 import { House3D } from "../../components/House3D/House3D";
-import { Html, Loader, OrbitControls, Sky, Text } from "@react-three/drei";
+import {  KeyboardControls, Loader, OrbitControls, Sky, Text, Text3D } from "@react-three/drei";
 import { Lapras3D } from "../../components/Lapras3D/Lapras3D";
 import { Sign3D } from "../../components/Sign3D/Sign3D";
 import Raindrop from "../../components/Raindrop/Raindrop";
 import { Suspense, useState } from "react";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
+import { Ball3d } from "../../components/Ball3d/Ball3d";
+
+import Stars from "../../components/Stars/Stars";
+import Tooltip from "../../components/Tooltip/Tooltip";
+import { Bottle3d_1 } from "../../components/Bottle3d_1/Bottle3d_1";
+import { Bottle3d_2 } from "../../components/Bottle3d_2/Bottle3d_2";
+import { Bottle3d_3 } from "../../components/Bottle3d_3/Bottle3d_3";
 
 const Pollution = () => {
+
+  const keyboardMap = [
+    { name: 'jump', keys: ['Space'] },
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,6 +46,10 @@ const Pollution = () => {
 
   return (
     <>
+      <div>
+        <Stars />
+        <Tooltip />
+      </div>
       <ButtonGoBack />
       <Canvas shadows camera={cameraSettings}>
         <Sky
@@ -59,21 +74,46 @@ const Pollution = () => {
           shadow-normalBias={0.5}
         />
         <Suspense fallback={null}>
+          <Text
+            position={[-1.59, -0.02, 2.05]}
+            color={"black"}
+            fontSize={0.1}
+            fontWeight={"bold"}
+          >
+            {`Click Aqui`}
+          </Text>
+          {/* <Text3D font={"/fonts/Black_Regular.json"} position={[0.05, 1.1, 1]} rotation={[0, -0.5, 0]} lineHeight={0.6} size={0.15} >
+                {`Oprime "Espacio"
+           v`}
+              <meshNormalMaterial color="black" />
+            </ Text3D> */}
+            <Text3D
+          curveSegments={32}
+          position={[0.4, 1.3, 1]}
+          bevelEnabled
+          bevelSize={0.04}
+          bevelThickness={0.1}
+          height={0}
+          lineHeight={0.5}
+          letterSpacing={0.04}
+          rotation={[0, -0.5, 0]}
+          size={0.2}
+          font="/fonts/Inter_Bold.json">
+          {`Oprime\nEspacio`}
+          <meshNormalMaterial />
+        </Text3D>
           <Physics>
             <Sign3D onClick={openSignModal} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} scale={0.02} position={[-1.6, -0.5, 2]} rotation={[0, 0, 0]} />
-            <Text
-              position={[-1.56, 0, 2.1]}
-              color={"black"}
-              fontSize={0.1}
-              fontWeight={"bold"}
-            >
+            <Bottle3d_1 scale={1.2} position={[4, -0, 1]} rotation={[5, 0, 0]} />
+            <Bottle3d_2 scale={1.2} position={[-4, 0, 1]} rotation={[5, 0, 0]} />
+            <Bottle3d_3 scale={1.2} position={[-2.2, 0, 1]} rotation={[5, 0, 0]} />
+            <Ball3d scale={0.3} position={[0, -0.4, 1]} />
+            <House3D scale={0.3} rotation={[0, 4.75, 0]} />
 
-              {`Click Aqui`}
-
-            </Text>
+            <KeyboardControls map={keyboardMap}>
+              <Lapras3D scale={0.005} position={[1, -0.5, 1]} rotation={[0, -0.5, 0]} />
+            </KeyboardControls>
           </Physics>
-          <House3D scale={0.3} rotation={[0, 4.75, 0]} />
-          <Lapras3D scale={0.005} position={[1, -0.5, 1]} rotation={[0, -0.5, 0]} />
           <OrbitControls
             maxPolarAngle={Math.PI * 0.4}
             minPolarAngle={Math.PI * 0.3}
@@ -84,7 +124,7 @@ const Pollution = () => {
             enablePan={false}
           />
         </Suspense>
-      </Canvas >
+      </Canvas>
       <Loader />
       <Raindrop isOpen={isOpen} onClose={closeSignModal} />
     </>

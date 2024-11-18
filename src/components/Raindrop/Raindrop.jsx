@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import 'animate.css';
 import PropTypes from 'prop-types';
 import "./Raindrop.css";
 
@@ -75,29 +76,31 @@ export default function Raindrop({ isOpen, onClose }) {
 
     return (
         <div onClick={onClose} className={`overlay ${!isOpen ? "close" : ""}`}>
-            <div className="drop" onClick={handleDropClick}>
-                {/* Texto actual */}
-                <div className="drop-content">
-                    <p>{texts[currentIndex].tituloProblematica}</p>
-                    <p>{texts[currentIndex].descripcionProblematica}</p>
-                    <p>{texts[currentIndex].tituloSolucion}</p>
-                    <p>{texts[currentIndex].descripcionSolucion}</p>
+            <div className={`${isOpen ? "animate__animated animate__bounceInDown" : ""}`}>
+                <div className={`drop`} onClick={handleDropClick}>
+                    {/* Texto actual */}
+                    <div className="drop-content">
+                        <p>{texts[currentIndex].tituloProblematica}</p>
+                        <p>{texts[currentIndex].descripcionProblematica}</p>
+                        <p>{texts[currentIndex].tituloSolucion}</p>
+                        <p>{texts[currentIndex].descripcionSolucion}</p>
 
-                    {/* Flechas de navegación */}
-                    <button className="prev" onClick={prevText}>◀</button>
-                    <button className="next" onClick={nextText}>▶</button>
+                        {/* Flechas de navegación */}
+                        <button className="prev" onClick={prevText}>◀</button>
+                        <button className="next" onClick={nextText}>▶</button>
 
-                    {/* Indicadores en forma de bolitas */}
-                    <div className="indicator">
-                        {texts.map((_, index) => (
-                            <span
-                                key={index}
-                                className={`dot ${index === currentIndex ? "active" : ""}`}
-                            ></span>
-                        ))}
+                        {/* Indicadores en forma de bolitas */}
+                        <div className="indicator">
+                            {texts.map((_, index) => (
+                                <span
+                                    key={index}
+                                    className={`dot ${index === currentIndex ? "active" : ""}`}
+                                ></span>
+                            ))}
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     )

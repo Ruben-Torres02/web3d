@@ -1,0 +1,79 @@
+/* Basic reset and styling */
+
+/* Tooltip container */
+.tooltip-container {
+    position: absolute;
+    top: 26px;
+    left: 191px;
+    z-index: 100000;
+  }
+  
+  /* Icon styling */
+  .icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+  
+  /* SVG Animation: Rotate and scale effect */
+  .icon svg {
+    color: #30c230;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .icon:hover svg {
+    transform: rotate(360deg) scale(1.2);
+  }
+  
+  /* Tooltip styling */
+  .tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    top: 150%; /* Position above the icon */
+    left: 50%;
+    margin-left: -100px; /* Center the tooltip */
+    opacity: 0;
+    transition:
+      opacity 0.5s,
+      transform 0.5s;
+    transform: translateY(10px);
+  }
+  
+  /* Tooltip Arrow */
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 45%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent ;
+  }
+  
+  /* Show tooltip on hover */
+  .tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
+  .tooltip-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
