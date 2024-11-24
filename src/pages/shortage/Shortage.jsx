@@ -11,6 +11,7 @@ import SensitizationText from "./text/SensitizationText";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
 import Catus from "../../components/catus/Catus";
+import Scorpio from "../../components/scorpio/Scorpio";
 
 
 function Modal({ text, onClose }) {
@@ -26,7 +27,7 @@ function Modal({ text, onClose }) {
 
 function Shortage() {
     const cameraSettings = {
-        position: [9, 8.5, 25],
+        position: [9, 8, 25],
         fov: 94,
     };
 
@@ -64,7 +65,7 @@ function Shortage() {
                 />
                 <Staging />
                 <Lights />
-                <Physics debug>
+                <Physics debug = {false}>
                     <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />
                     <Sign3D
                         scale={0.3}
@@ -80,7 +81,8 @@ function Shortage() {
                         onClick={() => handleSignClick(<ProblematicText />)}
                     />
 
-                    <Catus position = {[2, 2, 2]}  scale = {0.2}/>
+                    <Catus position = {[2, 1, 2]}  scale = {0.23}/>
+                    <Scorpio position ={[8,15,17]} />
 
 
                 </Physics>
