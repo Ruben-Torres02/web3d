@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import 'animate.css';
 import PropTypes from 'prop-types';
 import "./Raindrop.css";
 
