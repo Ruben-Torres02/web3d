@@ -3,7 +3,7 @@ import React from "react";
 const ProblematicText = () => {
     return (
         <div>
-
+            <p style={{ textAlign: "center", fontWeight: "bold", color: "#7AB2D3", fontSize: "22px" }}>Introducción</p>
             <p>
                 La escasez de agua es un desafío global que influye en la salud y el bienestar y el progreso social y
                 económico. A pesar de ser uno de los estados más acuíferos de Sudamérica, Colombia sufre de desigual acceso

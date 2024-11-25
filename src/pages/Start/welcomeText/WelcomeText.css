@@ -7,11 +7,11 @@
 .intro {
     font-weight: bold;
     font-size: 20px;
-    color:rgb(253, 253, 253);
+    color: black;
     p{
         width: 1000px;
         backdrop-filter: blur(30px);
-        background-color: #3c493b5e;
+        background-color: #7AB2D3;
         padding: 20px;
         border-radius: 10px;
     }
