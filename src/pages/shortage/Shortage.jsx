@@ -1,29 +1,45 @@
-import "./Shortage.css";  
+import "./Shortage.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text3D } from "@react-three/drei";
 import Lights from "./Lights";
 import Staging from "./staging/Staging";
 import { Sign3D } from "../../components/Sign3D/Sign3D";
 import { useState } from "react";
-import { Model } from "../../components/desert2/Desert2"; 
+import { Model } from "../../components/desert2/Desert2";
 import ProblematicText from "./text/ProblematicText";
 import SensitizationText from "./text/SensitizationText";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
 import Catus from "../../components/catus/Catus";
 import Scorpio from "../../components/scorpio/Scorpio";
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import SolutionText from "./text/SolutionText";
 
-
-function Modal({ text, onClose }) {
+function Modal({ text, onClose, onNext, onPrev, showModal }) {
     return (
-        <div className="modal">
+        <div className={`modal ${showModal ? 'show' : ''}`}>
             <div className="modal-content">
                 {text}
-                <button className="modal-content-button" onClick={onClose}>Cerrar</button>
+                <div className="modal-buttons">
+                    {/* Flecha para pasar al siguiente modal */}
+                    {onNext && (
+                        <button className="modal-arrow-button modal-arrow-next" onClick={onNext}>
+                            <FaArrowRight size={24} color="white" />
+                        </button>
+                    )}
+                    {/* Flecha para regresar al modal anterior */}
+                    {onPrev && (
+                        <button className="modal-arrow-button modal-arrow-prev" onClick={onPrev}>
+                            <FaArrowLeft size={24} color="white" />
+                        </button>
+                    )}
+                    <button className="modal-content-button" onClick={onClose}>Cerrar</button>
+                </div>
             </div>
         </div>
     );
 }
+
 
 function Shortage() {
     const cameraSettings = {
@@ -33,16 +49,40 @@ function Shortage() {
 
     const [showModal, setShowModal] = useState(false);
     const [modalText, setModalText] = useState("");
+    const [modalStep, setModalStep] = useState(0); // Para manejar el paso del modal
 
- 
+    // Contenido de los modales (puedes agregar más textos o componentes)
+    const modalContent = [
+        <ProblematicText />, //Modal 1
+        <SensitizationText />, //Modal 2
+        <SolutionText /> //Modal 3
+       
+   
+        
+    
+    ];
+
     const handleSignClick = (text) => {
-        setModalText(text); 
-        setShowModal(true);   
+        setModalText(text);
+        setShowModal(true);
     };
 
     const closeModal = () => {
         setShowModal(false);
     };
+
+    // Función para ir al siguiente modal
+    const goToNextModal = () => {
+        setModalStep((prevStep) => (prevStep + 1) % modalContent.length);  // Cambiar al siguiente modal
+        setModalText(modalContent[(modalStep + 1) % modalContent.length]); // Actualizar el texto del modal
+    };
+
+    // Función para ir al modal anterior
+    const goToPreviousModal = () => {
+        setModalStep((prevStep) => (prevStep - 1 + modalContent.length) % modalContent.length); // Cambiar al anterior
+        setModalText(modalContent[(modalStep - 1 + modalContent.length) % modalContent.length]); // Actualizar el texto
+    };
+    
 
     return (
         <div>
@@ -53,19 +93,17 @@ function Shortage() {
                 style={{ height: "100vh", width: "100vw" }}
             >
                 <OrbitControls
-
-                    minDistance={10}    
-                    maxDistance={27}   
-                    maxPolarAngle={Math.PI / 2.5}  
-                    minPolarAngle={Math.PI / 3.3} 
-                    minAzimuthAngle={-Math.PI / 6}  
-                    maxAzimuthAngle={Math.PI / 6}   
+                    minDistance={10}
+                    maxDistance={27}
+                    maxPolarAngle={Math.PI / 2.5}
+                    minPolarAngle={Math.PI / 3.3}
+                    minAzimuthAngle={-Math.PI / 6}
+                    maxAzimuthAngle={Math.PI / 6}
                     enablePan={false}
-
                 />
                 <Staging />
                 <Lights />
-                <Physics debug = {false}>
+                <Physics debug={false}>
                     <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />
                     <Sign3D
                         scale={0.3}
@@ -74,20 +112,14 @@ function Shortage() {
                         onClick={() => handleSignClick(<SensitizationText />)}
                     />
                     <Sign3D
-
                         scale={0.3}
                         position={[-10, -0.5, 2]}
                         text="Problematica"
                         onClick={() => handleSignClick(<ProblematicText />)}
                     />
-
-                    <Catus position = {[2, 1, 2]}  scale = {0.23}/>
-                    <Scorpio position ={[8,15,17]} />
-
-
+                    <Catus position={[2, 1, 2]} scale={0.23} />
+                    <Scorpio position={[7, 1, 18]} />
                 </Physics>
-
-
                 <Text3D
                     position={[-15, 13, 0.2]}
                     font="fonts/blue-ocean.json"
@@ -103,9 +135,15 @@ function Shortage() {
                     <meshNormalMaterial attach="material" />
                 </Text3D>
             </Canvas>
-
-            {/* Mostrar el modal si showModal es verdadero */}
-            {showModal && <Modal text={modalText} onClose={closeModal} />}
+            {showModal && (
+                <Modal
+                    text={modalText}
+                    onClose={closeModal}
+                    onNext={goToNextModal}
+                    onPrev={goToPreviousModal}
+                    showModal={showModal}
+                />
+            )}
         </div>
     );
 }

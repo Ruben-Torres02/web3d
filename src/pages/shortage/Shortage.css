@@ -1,7 +1,7 @@
-html, body #root {
+html, body, #root {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Para evitar barras de desplazamiento */
+    overflow: hidden; /* Evita barras de desplazamiento */
     width: 100%;
     height: 100%;
     position: fixed;
@@ -19,40 +19,81 @@ canvas {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
     display: flex;
     justify-content: center;
     align-items: center;
-    visibility: visible; /* Asegúrate de que el modal sea visible */
+    visibility: visible; /* Modal visible */
     opacity: 1;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Contenido del modal - Fondo azul transparente */
+/* Contenido del modal */
 .modal-content {
-    background-color: rgba(104, 137, 244, 0.7); /* Fondo azul con transparencia */
-    padding: 5px;
-    border-radius: 10px;
+    background-color: #DFF2EB; /* Fondo azul con transparencia */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
     max-width: 1000px;
     width: 100%;
-    text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: white; /* Color de texto blanco para contraste */
-    font-size: 20px; /* Aumentar tamaño de fuente si es necesario */
+    color: black; /* Texto blanco */
+    font-size: 18px; /* Tamaño de fuente */
+    display: flex;
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center; /* Centrar horizontalmente los elementos */
+    text-align: justify; /* Justificar texto */
+    position: relative; /* Necesario para posicionar las flechas */
 }
 
 /* Botón de cierre del modal */
 .modal-content-button {
-    margin-top: 200px;
-    padding: 10px;
-    border: none;
-    background-color: #07b5ef; /* Azul oscuro */
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-
+    margin-top: 10px; /* Espacio superior */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin bordes */
+    background-color: #7AB2D3; /* Azul oscuro */
+    color: black; /* Texto blanco */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    
 }
 
 .modal-content-button:hover {
-    background-color: #5209f1; /* Azul más oscuro al pasar el mouse */
+    background-color: #4A628A; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Botones de flecha del modal */
+.modal-arrow-button {
+    background-color: #7AB2D3;
+    border: #4A628A;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+/* Flecha a la izquierda */
+.modal-arrow-prev {
+    position: absolute;
+    left: 10px; /* Posiciona a la izquierda */
+    top: 85%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta la posición para centrar */
+}
+
+/* Flecha a la derecha */
+.modal-arrow-next {
+    position: absolute;
+    right: 10px; /* Posiciona a la derecha */
+    top: 85%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta la posición para centrar */
+}
+
+.modal-arrow-button:hover {
+    opacity: 0.7;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5 px;
 }
