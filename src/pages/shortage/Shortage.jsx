@@ -14,6 +14,7 @@ import Catus from "../../components/catus/Catus";
 import Scorpio from "../../components/scorpio/Scorpio";
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SolutionText from "./text/SolutionText";
+import KeyboardControls from "./keyboardControls/KeyboradControls";
 
 function Modal({ text, onClose, onNext, onPrev, showModal }) {
     return (
@@ -21,13 +22,11 @@ function Modal({ text, onClose, onNext, onPrev, showModal }) {
             <div className="modal-content">
                 {text}
                 <div className="modal-buttons">
-                    {/* Flecha para pasar al siguiente modal */}
                     {onNext && (
                         <button className="modal-arrow-button modal-arrow-next" onClick={onNext}>
                             <FaArrowRight size={24} color="white" />
                         </button>
                     )}
-                    {/* Flecha para regresar al modal anterior */}
                     {onPrev && (
                         <button className="modal-arrow-button modal-arrow-prev" onClick={onPrev}>
                             <FaArrowLeft size={24} color="white" />
@@ -56,10 +55,7 @@ function Shortage() {
         <ProblematicText />, //Modal 1
         <SensitizationText />, //Modal 2
         <SolutionText /> //Modal 3
-       
-   
-        
-    
+
     ];
 
     const handleSignClick = (text) => {
@@ -103,6 +99,7 @@ function Shortage() {
                 />
                 <Staging />
                 <Lights />
+                <KeyboardControls />w
                 <Physics debug={false}>
                     <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />
                     <Sign3D
