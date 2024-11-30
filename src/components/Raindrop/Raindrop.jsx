@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
+import 'animate.css';
 import "./Raindrop.css";
 
 export default function Raindrop({ isOpen, onClose }) {
