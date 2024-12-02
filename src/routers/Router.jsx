@@ -7,6 +7,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 import Start from '../pages/Start/Start.jsx';
 import Shortage from '../pages/shortage/Shortage.jsx';
 import Pollution from '../pages/pollution/Pollution.jsx';
+import Test from '../pages/test/Test.jsx';
 
 const Router = createBrowserRouter([
     {
@@ -54,6 +55,14 @@ const Router = createBrowserRouter([
       element:(
         <ProtectedRoute>
            <Pollution />
+        </ProtectedRoute>
+        )
+    },
+    {
+      path:'/test',
+      element:(
+        <ProtectedRoute>
+           <Test />
         </ProtectedRoute>
         )
     }

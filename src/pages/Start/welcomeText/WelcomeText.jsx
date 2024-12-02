@@ -50,8 +50,8 @@ const WelcomeText = () => {
                 distanceFactor={100}>
                     <Button text = {"contaminacion"} onClick={() => handleRedirect("/pollution")}/>
                     <Button text = {"escasez"} onClick={() => handleRedirect("/shortage")}/>
-                    <Button text = {"acidificacion"} onClick={() => handleRedirect("/acidificacion")} />   
-                    <Button text = {"Test"} onClick={() => handleRedirect("/acidificacion")} />   
+                    {/* <Button text = {"acidificacion"} onClick={() => handleRedirect("/acidificacion")} />    */}
+                    <Button text = {"Test"} onClick={() => handleRedirect("/test")} />   
             </Html>           
         </>
     );
