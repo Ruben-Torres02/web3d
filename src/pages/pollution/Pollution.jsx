@@ -15,6 +15,8 @@ import Tooltip from "../../components/Tooltip/Tooltip";
 import { Bottle3d_1 } from "../../components/Bottle3d_1/Bottle3d_1";
 import { Bottle3d_2 } from "../../components/Bottle3d_2/Bottle3d_2";
 import { Bottle3d_3 } from "../../components/Bottle3d_3/Bottle3d_3";
+import PostProcessing from "../../components/PostProcessing/Post Procesing";
+import VideoPollution from "../../components/VideoPollution/VideoPollution";
 
 const Pollution = () => {
 
@@ -52,6 +54,7 @@ const Pollution = () => {
       </div>
       <ButtonGoBack />
       <Canvas shadows camera={cameraSettings}>
+        <PostProcessing/>
         <Sky
           distance={450000}
           sunPosition={[0, 1, 0]}
@@ -102,6 +105,7 @@ const Pollution = () => {
           {`Oprime\nEspacio`}
           <meshNormalMaterial />
         </Text3D>
+          <VideoPollution position={[-0.1,2.5,0]}/>
           <Physics>
             <Sign3D onClick={openSignModal} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} scale={0.02} position={[-1.6, -0.5, 2]} rotation={[0, 0, 0]} />
             <Bottle3d_1 scale={1.2} position={[4, -0, 1]} rotation={[5, 0, 0]} />
