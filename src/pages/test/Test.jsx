@@ -5,7 +5,7 @@ import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
 import { Boat3d } from "../../components/Boat3d/Boat3d";
 import { Ocean3d } from "../../components/Ocean3d/Ocean3d";
-import PostProcessing from "../../components/PostProcessing/Post Procesing";
+import PostProcessing from "../../components/PostProcessing/PostProcesing";
 
 const Test = () => {
 

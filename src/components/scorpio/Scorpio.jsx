@@ -13,7 +13,7 @@ const Scorpio = (props) => {
 
     return (
 
-        <RigidBody ref={rbScorpioRef} gravityScale={0.15} colliders="trimesh" >
+        <RigidBody ref={rbScorpioRef} gravityScale={0.8} colliders="trimesh" >
 
             <group {...props} dispose={null} >
                 <mesh
