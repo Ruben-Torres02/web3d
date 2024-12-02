@@ -15,7 +15,7 @@ import Tooltip from "../../components/Tooltip/Tooltip";
 import { Bottle3d_1 } from "../../components/Bottle3d_1/Bottle3d_1";
 import { Bottle3d_2 } from "../../components/Bottle3d_2/Bottle3d_2";
 import { Bottle3d_3 } from "../../components/Bottle3d_3/Bottle3d_3";
-import PostProcessing from "../../components/PostProcessing/Post Procesing";
+import PostProcessing from "../../components/PostProcessing/PostProcesing";
 import VideoPollution from "../../components/VideoPollution/VideoPollution";
 
 const Pollution = () => {

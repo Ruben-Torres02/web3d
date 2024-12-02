@@ -15,6 +15,9 @@ import Scorpio from "../../components/scorpio/Scorpio";
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SolutionText from "./text/SolutionText";
 import KeyboardControls from "./keyboardControls/KeyboradControls";
+import Video from "./video";
+import PostProcessing from "../../components/PostProcessing/PostProcesing";
+
 
 function Modal({ text, onClose, onNext, onPrev, showModal }) {
     return (
@@ -42,7 +45,7 @@ function Modal({ text, onClose, onNext, onPrev, showModal }) {
 
 function Shortage() {
     const cameraSettings = {
-        position: [9, 8, 25],
+        position: [0, 8, 35],
         fov: 94,
     };
 
@@ -78,7 +81,7 @@ function Shortage() {
         setModalStep((prevStep) => (prevStep - 1 + modalContent.length) % modalContent.length); // Cambiar al anterior
         setModalText(modalContent[(modalStep - 1 + modalContent.length) % modalContent.length]); // Actualizar el texto
     };
-    
+
 
     return (
         <div>
@@ -97,8 +100,10 @@ function Shortage() {
                     maxAzimuthAngle={Math.PI / 6}
                     enablePan={false}
                 />
+                <PostProcessing />
                 <Staging />
                 <Lights />
+                <Video name="screen" position={[-20, 15, 6]} scale={6} />
                 <KeyboardControls />w
                 <Physics debug={false}>
                     <Model position={[0, 18, 0]} scale={[1.5, 1.5, 1.5]} />
