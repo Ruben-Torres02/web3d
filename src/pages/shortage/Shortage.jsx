@@ -15,7 +15,7 @@ import Scorpio from "../../components/scorpio/Scorpio";
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SolutionText from "./text/SolutionText";
 import KeyboardControls from "./keyboardControls/KeyboradControls";
-import Video from "./video";
+import Video from "./Video";
 import PostProcessing from "../../components/PostProcessing/PostProcesing";
 
 
