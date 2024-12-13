@@ -10,6 +10,8 @@ import Pollution from '../pages/pollution/Pollution.jsx';
 import Test from '../pages/test/Test.jsx';
 import ShortageTest from '../pages/shortageTest/shortageTest.jsx';
 
+
+
 const Router = createBrowserRouter([
   {
     path: '/',
