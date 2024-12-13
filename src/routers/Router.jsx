@@ -8,7 +8,7 @@ import Start from '../pages/Start/Start.jsx';
 import Shortage from '../pages/shortage/Shortage.jsx';
 import Pollution from '../pages/pollution/Pollution.jsx';
 import Test from '../pages/test/Test.jsx';
-import ShortageTest from '../pages/shortageTest/shortageTest.jsx';
+import ShortageTest from '../pages/shortageTest/ShortageTest.jsx';
 
 
 
