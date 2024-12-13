@@ -6,6 +6,7 @@ import { Physics } from "@react-three/rapier";
 import { Boat3d } from "../../components/Boat3d/Boat3d";
 import { Ocean3d } from "../../components/Ocean3d/Ocean3d";
 import PostProcessing from "../../components/PostProcessing/PostProcesing";
+import ButtonTest from "./ButtonTest";
 
 const Test = () => {
 
@@ -24,6 +25,7 @@ const Test = () => {
     <>
       <ButtonGoBack />
       <Canvas shadows camera={cameraSettings}>
+      <ButtonTest />
       <PostProcessing />
         <Sky
           distance={450000}
