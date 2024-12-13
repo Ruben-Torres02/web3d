@@ -6,6 +6,7 @@ import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import Cylinder from "../../components/cylinder/Cylinder";
 import TrashBag from "../../components/trashBag/TrashBag";
 import FireMoisturizer from "../../components/fireMoisturizer/FireMoisturizer";
+import PostProcessing from "../../components/PostProcessing/PostProcesing";
 
 
 
@@ -26,6 +27,7 @@ const ShortageTest = () => {
             <TrashBag position = {[8, 0, 9]} scale = {1}/>
             <FireMoisturizer position={[2,1,0]} scale = {2.5} />
             <OrbitControls />
+            <PostProcessing />
             <Sky 
                 sunPosition={[0,0,1]}
                 inclination={0.2}
