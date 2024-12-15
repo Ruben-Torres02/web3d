@@ -1,13 +1,19 @@
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 
 const TrashBag = (props) => {
     const { nodes, materials } = useGLTF('models-3d/trashbag.glb')
+    const [visible , setVisible] = useState (true);
 
+    const handleClick = () => {
+      setVisible (false);
+    }
     return (
-        <group {...props} dispose={null}>
+        <>
+        {visible &&(
+        <group {...props} dispose={null} onClick={handleClick}>
         <mesh
           castShadow
           receiveShadow
@@ -27,6 +33,8 @@ const TrashBag = (props) => {
           scale={0.01}
         />
       </group>
+      )}
+      </>
     )
 
 }
