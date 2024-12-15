@@ -1,11 +1,18 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const Cylinder = (props) => {
     const { nodes, materials } = useGLTF('models-3d/cylinder.glb')
+    const [visible, setVisible] = useState (true)
+
+    const handleClick = () => {
+      setVisible(false);
+    }
 
     return (
-        <group {...props} dispose={null}>
+      <>
+      {visible && (
+        <group {...props} dispose={null} onClick={handleClick}>
         <mesh
           castShadow
           receiveShadow
@@ -15,8 +22,10 @@ const Cylinder = (props) => {
           rotation={[0.076, 0.238, -1.19]}
         />
       </group>
-
+      )}
+      </>
     )
+    
 
 }
 
