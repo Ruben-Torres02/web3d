@@ -6,7 +6,10 @@ const Coral =(props) => {
     const { nodes } = useGLTF('models-3d/coral.glb')
     const [visible , setVisible] = useState (true);
     const incrementQuizProgress = useQuizStore (state => state.incrementQuizProgress);
+    const [hasInteracted, setHasInteracted] = useState (false);
     const handleClick = () => {
+      if (hasInteracted) return;
+        setHasInteracted;
         incrementQuizProgress ();
         alert ('¡Excelente! Los corales blancos representan arrecifes de coral muertos, una consecuencia directa de la acidificación de los océanos y el cambio climático. Estos ecosistemas vitales están desapareciendo rápidamente, afectando la biodiversidad marina.');
         setVisible (false);

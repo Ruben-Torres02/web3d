@@ -8,8 +8,11 @@ const TrashBag = (props) => {
     const { nodes, materials } = useGLTF('models-3d/trashbag.glb')
     const incrementQuizProgress = useQuizStore (state => state.incrementQuizProgress);
     const [visible , setVisible] = useState (true);
+    const [hasInteracted, setHasInteracted] = useState (false);
 
     const handleClick = () => {
+      if (hasInteracted) return;
+      setHasInteracted;
       incrementQuizProgress();
       alert ('¡Excelente! La basura en los ríos no solo daña la naturaleza, sino que contamina nuestras fuentes de agua')
       setVisible (false);
