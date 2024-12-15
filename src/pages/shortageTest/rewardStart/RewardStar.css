@@ -1,0 +1,45 @@
+.reward-star-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 20; /* Asegúrate de que esté por encima de todo */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro translúcido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.reward-star {
+    font-size: 50px; /* Tamaño grande para la estrella */
+    color: gold; /* Color dorado */
+    animation: bounce 1s infinite; /* Efecto animado */
+}
+
+.reward-text {
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
