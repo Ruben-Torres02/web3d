@@ -11,8 +11,11 @@ import Dory from "../../components/Dory/Dory";
 import Coral from "../../components/Coral/Coral";
 import Coral_1 from "../../components/Coral_1/Coral_1";
 import Coral_2 from "../../components/Coral_2/Coral_2";
+import useQuizStore from "../../stores/use-quiz-store";
+import "./ShortageTest.css";
 
 const ShortageTest = () => {
+    const percentageQuizCompleted = useQuizStore(state => state.quiz.percentageQuizCompleted)
     const cameraSettings = {
         position: [0, -2, 18],
         fov: 65,
@@ -25,16 +28,16 @@ const ShortageTest = () => {
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 50, 5]} intensity={2} />
                 <Nature />
-                <Cylinder position={[8.5, -0.8, 0]} scale={2}/>
-                <TrashBag position={[8, 0, 9]} scale={1}/>
+                <Cylinder position={[8.5, -0.8, 0]} scale={2} />
+                <TrashBag position={[8, 0, 9]} scale={1} />
                 <FireMoisturizer position={[2, 1, 0]} scale={2.5} />
-                <Dory position={[8, 0.4, 10]} scale={2}/>
-                <Coral position={[9,-1,-4]}scale={0.1}/>
-                <Coral_1 position = {[9, -0.6, 7]} scale={0.015}/>
-                <Coral_2 position = {[10, -0, 0]} scale={0.1}/>
+                <Dory position={[8, 0.4, 10]} scale={2} />
+                <Coral position={[9, -1, -4]} scale={0.1} />
+                <Coral_1 position={[9, -0.6, 7]} scale={0.015} />
+                <Coral_2 position={[10, -0, 0]} scale={0.1} />
                 <OrbitControls />
                 <PostProcessing />
-                <Sky 
+                <Sky
                     sunPosition={[0, 0, 1]}
                     inclination={0.2}
                     azimuth={180}
@@ -45,7 +48,7 @@ const ShortageTest = () => {
                     turbidity={15}
                     expesure={1}
                 />
-                <Stars 
+                <Stars
                     radius={100}
                     depth={50}
                     count={5000}
@@ -55,6 +58,19 @@ const ShortageTest = () => {
                     speed={2}
                 />
             </Canvas>
+
+            <div className="progress-bar-container">
+                <div
+                    className="progress-bar"
+                    style={{
+                        width: `${percentageQuizCompleted}%`,
+                    }}
+                />
+            </div>
+
+            <div className="progress-text">
+                <span>{percentageQuizCompleted}% Completado</span>
+            </div>
         </>
     );
 };

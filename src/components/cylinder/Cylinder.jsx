@@ -1,11 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import useQuizStore from '../../stores/use-quiz-store'
 
 const Cylinder = (props) => {
     const { nodes, materials } = useGLTF('models-3d/cylinder.glb')
     const [visible, setVisible] = useState (true)
+    const incrementQuizProgress = useQuizStore ( state => state.incrementQuizProgress);
 
     const handleClick = () => {
+      incrementQuizProgress();
+      alert ('¡Excelente! La descarga de materiales peligrosos en el agua pone en riesgo toda la vida acuática y la salud humana. ¡No permitas que productos tóxicos contaminen nuestras fuentes de agua!')
       setVisible(false);
     }
 

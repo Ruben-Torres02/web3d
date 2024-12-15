@@ -22,7 +22,7 @@ const useQuizStore = create((set) => ({
 
     incrementQuizProgress: () => {
         set((state) => {
-            const newPercentage = Math.min(state.quiz.percentageQuizCompleted + 25, 100)
+            const newPercentage = Math.min(state.quiz.percentageQuizCompleted + 20, 100)
             return {
                 quiz: {
                     ...state.quiz,
