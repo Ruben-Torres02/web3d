@@ -1,13 +1,17 @@
 
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import useQuizStore from '../../stores/use-quiz-store'
 
 
 const TrashBag = (props) => {
     const { nodes, materials } = useGLTF('models-3d/trashbag.glb')
+    const incrementQuizProgress = useQuizStore (state => state.incrementQuizProgress);
     const [visible , setVisible] = useState (true);
 
     const handleClick = () => {
+      incrementQuizProgress();
+      alert ('¡Excelente! La basura en los ríos no solo daña la naturaleza, sino que contamina nuestras fuentes de agua')
       setVisible (false);
     }
     return (

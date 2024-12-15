@@ -1,12 +1,16 @@
 
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import useQuizStore from '../../stores/use-quiz-store'
 
 
 const Dory = (props) => {
     const { nodes, materials } = useGLTF('models-3d/Dory.glb')
+    const incrementQuizProgress = useQuizStore (state => state.incrementQuizProgress);
     const [visible , setVisible] = useState (true);
     const handleClick = () => {
+        incrementQuizProgress ();
+        alert ('¡Excelente! Este pez es una víctima de la acidificación de los océanos. A medida que los océanos absorben más CO2, su acidez aumenta, afectando la vida marina.')
         setVisible (false);
       }
     return (
