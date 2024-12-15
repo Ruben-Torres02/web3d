@@ -28,3 +28,49 @@
     width: auto; /* El texto solo ocupa el espacio necesario */
     z-index: 10;
 }
+
+.modal-overlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content1 {
+    background: #B9E5E8;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Ajusta el ancho según lo que necesites */
+    max-width: 800px; /* Limita el ancho máximo */
+    min-width: 400px; /* Opcional: Asegura un ancho mínimo */
+}
+
+.modal-content1 h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: #4A628A;
+}
+
+.modal-content1 p {
+    font-size: 22px;
+}
+
+.modal-content1 button {
+    background-color: #4A628A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
