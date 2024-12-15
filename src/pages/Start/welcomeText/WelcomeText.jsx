@@ -51,7 +51,7 @@ const WelcomeText = () => {
                     <Button text = {"contaminacion"} onClick={() => handleRedirect("/pollution")}/>
                     <Button text = {"escasez"} onClick={() => handleRedirect("/shortage")}/>
                     {/* <Button text = {"acidificacion"} onClick={() => handleRedirect("/acidificacion")} />    */}
-                    <Button text = {"Test"} onClick={() => handleRedirect("/test")} />   
+                    <Button text = {"Test"} onClick={() => handleRedirect("/shortage-Test")} />   
             </Html>           
         </>
     );

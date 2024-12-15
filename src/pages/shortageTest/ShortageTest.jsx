@@ -17,32 +17,13 @@ import "./ShortageTest.css";
 import RewardStar from "./rewardStart/RewardStar";
 
 const ShortageTest = () => {
-    const [isModalOpen, setIsModalOpen] = useState(true); // Controla si el modal está visible
-    const [currentMessage, setCurrentMessage] = useState(0); // Controla el mensaje actual del modal
+    const [isModalOpen, setIsModalOpen] = useState(true); 
     const percentageQuizCompleted = useQuizStore((state) => state.quiz.percentageQuizCompleted);
 
     const cameraSettings = {
         position: [0, -2, 18],
         fov: 65,
     };
-
-    // Mensajes del modal
-    const introMessages = [
-        "Bienvenido al test interactivo.",
-        "Aprenderás cómo prevenir la escasez de agua.",
-        "Explorarás formas de reducir la contaminación del agua.",
-        "Conocerás cómo combatir la acidificación de los océanos.",
-        "¡Comencemos y marca la diferencia!",
-    ];
-
-    const handleNextMessage = () => {
-        if (currentMessage < introMessages.length - 1) {
-            setCurrentMessage((prev) => prev + 1);
-        } else {
-            setIsModalOpen(false); // Cierra el modal al llegar al último mensaje
-        }
-    };
-
     return (
         <>
             {isModalOpen && (
