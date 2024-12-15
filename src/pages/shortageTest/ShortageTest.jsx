@@ -31,7 +31,7 @@ const ShortageTest = () => {
                 <Dory position={[8, 0.4, 10]} scale={2}/>
                 <Coral position={[9,-1,-4]}scale={0.1}/>
                 <Coral_1 position = {[9, -0.6, 7]} scale={0.015}/>
-                <Coral_2 position = {[10, 1, 0]} scale={0.1}/>
+                <Coral_2 position = {[10, -0, 0]} scale={0.1}/>
                 <OrbitControls />
                 <PostProcessing />
                 <Sky 
