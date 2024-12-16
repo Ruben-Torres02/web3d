@@ -3,18 +3,26 @@ import { KeyboardControls, Loader, OrbitControls, Sky, Text, Text3D } from "@rea
 import { Suspense } from "react";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
-import { Boat3d } from "../../components/Boat3d/Boat3d";
 import { Ocean3d } from "../../components/Ocean3d/Ocean3d";
 import PostProcessing from "../../components/PostProcessing/PostProcesing";
-import ButtonTest from "./ButtonTest";
+import { CrushedBottle } from "../../components/CrushedBottle/crushedbottle";
+import { GreenPuddle } from "../../components/GreenPuddle/GreenPuddle";
+import { BlackPuddle } from "../../components/BlackPuddle/BlackPuddle";
+import { generateRandomX, generateRandomZ } from "../../utils/randomNumber";
+import { Boat3d } from "../../components/Boat3d/Boat3d"
+import Prueba from "../../components/Prueba/Prueba";
+import Prueba2 from "../../components/Prueba/Prueba2";
+import Ecctrl from 'ecctrl'
 
 const Test = () => {
 
   const keyboardMap = [
-    { name: "forward", keys: ["KeyW", "ArrowUp"] },
-    { name: "backward", keys: ["KeyS", "ArrowDown"] },
-    { name: "left", keys: ["KeyA", "ArrowLeft"] },
-    { name: "right", keys: ["KeyD", "ArrowRight"] },
+    { name: "forward", keys: ["ArrowUp", "KeyW"] },
+    { name: "backward", keys: ["ArrowDown", "KeyS"] },
+    { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+    { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+    { name: "jump", keys: ["Space"] },
+    { name: "run", keys: ["Shift"] },
   ];
 
   const cameraSettings = {
@@ -24,9 +32,8 @@ const Test = () => {
   return (
     <>
       <ButtonGoBack />
-      <Canvas shadows camera={cameraSettings}>
-      <ButtonTest />
-      <PostProcessing />
+      {/* <ButtonTest /> */}
+      <Canvas shadows>
         <Sky
           distance={450000}
           sunPosition={[0, 1, 0]}
@@ -48,23 +55,27 @@ const Test = () => {
           shadow-mapSize-height={2048}
           shadow-normalBias={0.5}
         />
-        <Suspense fallback={null}>
-          <Physics>
+        <Physics timeStep="vary">
+          <Suspense fallback={null}>
             <KeyboardControls map={keyboardMap}>
-              <Boat3d scale={0.03} position={[0, 0, 0]} />
+              <Ecctrl name="boat" floatHeight={0}>
+                <Boat3d rotation={[0, -Math.PI / 2, 0]} scale={0.03} />
+              </Ecctrl>
+
             </KeyboardControls>
+            {
+              Array.from({ length: 5 }, (_, i) => (
+                <>
+                  <CrushedBottle position={[generateRandomX(), 0 ,generateRandomZ()]}/>
+                  <GreenPuddle position={[generateRandomX(), 0 ,generateRandomZ()]} scale={3}/>
+                  <BlackPuddle position={[generateRandomX(), 1.4 ,generateRandomZ()]} scale={3}/>
+                </>
+                
+              ))
+            }
             <Ocean3d />
-          </Physics>
-          <OrbitControls
-            maxPolarAngle={Math.PI * 0.4}
-            minPolarAngle={Math.PI * 0.3}
-            maxAzimuthAngle={Math.PI * 0.25}
-            minAzimuthAngle={-Math.PI * 0.25}
-            minDistance={5}
-            maxDistance={10}
-            enablePan={false}
-          />
-        </Suspense>
+          </Suspense>
+        </Physics>
       </Canvas>
       <Loader />
     </>

@@ -2,23 +2,23 @@ import React from 'react';
 import { RigidBody } from '@react-three/rapier';
 import { MeshReflectorMaterial } from '@react-three/drei';
 
-export function Ocean3d() {
+export function Ocean3d(props) {
   return (
-    <RigidBody type="fixed" colliders="trimesh" position={[-15,0, -15]}>
-      <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[50, 50, 50, 50]} />
-        <MeshReflectorMaterial
-          blur={[300, 100]}
-          resolution={1024}
-          mixStrength={1}
-          mirror={0.5}
-          depthScale={1}
-          minDepthThreshold={0.8}
-          maxDepthThreshold={1.2}
-          color="#1e90ff"
-          metalness={0.6}
-          roughness={0.8}
-        />
+    <RigidBody
+      type="fixed"
+      colliders="cuboid"    
+      ccd                
+      friction={0.65}
+      restitution={0.2}
+      {...props}          
+    >
+      <mesh
+        position={[0,-5, 0]}
+        receiveShadow={true}
+      >
+        <cylinderGeometry args={[100, 50, 10, 32]} />
+        
+        <meshStandardMaterial color="#1e90ff" />
       </mesh>
     </RigidBody>
   );
