@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
+import useQuizTime from '../../stores/use-time-store';
 
 export function CrushedBottle(props) {
   const { nodes, materials } = useGLTF('/models-3d/crushedbottle.glb')
   const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(true);
+    const { setQuizPoints, setQuizStarted } = useQuizTime();
   
     const handleCollisionEnter = () => {
-      console.log('Colisión detectada');
+      setQuizPoints()
       setIsVisible(false); // Oculta el objeto
+      setQuizStarted(true)
     };
   
     if (!isVisible) return null; // Deja de renderizar el componente si no es visible

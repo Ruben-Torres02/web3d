@@ -1,6 +1,6 @@
 export function generateRandomX() {
-    const minX = -40;
-    const maxX = 10;
+    const minX = -30;
+    const maxX = 30;
 
     const randomInRange = (min, max) => Math.random() * (max - min) + min;
 
@@ -8,8 +8,8 @@ export function generateRandomX() {
 }
 
 export function generateRandomZ() {
-    const minZ = -40;
-    const maxZ = 8;
+    const minZ = -30;
+    const maxZ = 30;
 
     const randomInRange = (min, max) => Math.random() * (max - min) + min;
 

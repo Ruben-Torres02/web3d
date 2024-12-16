@@ -1,7 +1,7 @@
 import React from 'react'
 import './Tooltip.css'
 
-export default function Tooltip() {
+export default function Tooltip({text}) {
   return (
     <>
         <div className="tooltip-container">
@@ -18,7 +18,7 @@ export default function Tooltip() {
         </svg>
     </div>
     <div className="tooltip">
-        <p>Dale Click a la basura para limpiar el mar</p>
+        <p>{text}</p>
     </div>
     </div>
     </>

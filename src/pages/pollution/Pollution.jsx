@@ -50,7 +50,7 @@ const Pollution = () => {
     <>
       <div>
         <Stars />
-        <Tooltip />
+        <Tooltip text={"Dale Click a la basura para limpiar el mar"}/>
       </div>
       <ButtonGoBack />
       <Canvas shadows camera={cameraSettings}>
