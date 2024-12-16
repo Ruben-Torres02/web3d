@@ -1,6 +1,6 @@
 import "./Shortage.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text3D } from "@react-three/drei";
+import { Html, OrbitControls, Text3D } from "@react-three/drei";
 import Lights from "./Lights";
 import Staging from "./staging/Staging";
 import { Sign3D } from "../../components/Sign3D/Sign3D";
@@ -16,7 +16,7 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SolutionText from "./text/SolutionText";
 import KeyboardControls from "./keyboardControls/KeyboradControls";
 import Video from "./Video";
-import PostProcessing from "../../components/PostProcessing/PostProcesing";
+import PostProcessingShortage from "./postProcessingShortage/PostProcessingShortage";
 
 
 function Modal({ text, onClose, onNext, onPrev, showModal }) {
@@ -86,6 +86,7 @@ function Shortage() {
     return (
         <div>
             <ButtonGoBack />
+            
             <Canvas
                 shadows
                 camera={cameraSettings}
@@ -100,7 +101,7 @@ function Shortage() {
                     maxAzimuthAngle={Math.PI / 6}
                     enablePan={false}
                 />
-                <PostProcessing />
+
                 <Staging />
                 <Lights />
                 <Video name="screen" position={[-20, 15, 6]} scale={6} />
@@ -121,6 +122,7 @@ function Shortage() {
                     />
                     <Catus position={[2, 1, 2]} scale={0.23} />
                     <Scorpio position={[7, 1, 18]} />
+                    <PostProcessingShortage />
                 </Physics>
                 <Text3D
                     position={[-15, 13, 0.2]}
@@ -136,6 +138,16 @@ function Shortage() {
                     Escasez de agua.
                     <meshNormalMaterial attach="material" />
                 </Text3D>
+                <Html
+                    position={[12, -0.5, 11]}
+                    
+                    
+                    >
+                    <div style={{fontSize: "1em", width: "300px", whiteSpace: "normal"}}>
+                        Haz clic aqui
+                    </div>
+                    
+                </Html>
             </Canvas>
             {showModal && (
                 <Modal
@@ -146,6 +158,7 @@ function Shortage() {
                     showModal={showModal}
                 />
             )}
+
         </div>
     );
 }

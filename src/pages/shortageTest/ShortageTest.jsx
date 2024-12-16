@@ -17,13 +17,15 @@ import "./ShortageTest.css";
 import RewardStar from "./rewardStart/RewardStar";
 
 const ShortageTest = () => {
-    const [isModalOpen, setIsModalOpen] = useState(true); 
+    const [isModalOpen, setIsModalOpen] = useState(true); // Controla si el modal está visible
+    
     const percentageQuizCompleted = useQuizStore((state) => state.quiz.percentageQuizCompleted);
 
     const cameraSettings = {
         position: [0, -2, 18],
         fov: 65,
     };
+    
     return (
         <>
             {isModalOpen && (
