@@ -5,7 +5,7 @@ import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
 import { Ocean3d } from "../../components/Ocean3d/Ocean3d";
 import PostProcessing from "../../components/PostProcessing/PostProcesing";
-import { CrushedBottle } from "../../components/CrushedBottle/Crushedbottle";
+import { CrushedBottle } from "../../components/CrushedBottle/CrushedBottle";
 import { GreenPuddle } from "../../components/GreenPuddle/GreenPuddle";
 import { BlackPuddle } from "../../components/BlackPuddle/BlackPuddle";
 import { generateRandomX, generateRandomZ } from "../../utils/randomNumber";
