@@ -26,7 +26,7 @@ export default function Timer() {
         }
 
         // Detener el temporizador al alcanzar los 15 puntos
-        if (quizPoints >= 2) {
+        if (quizPoints >= 15) {
             clearInterval(interval);
             setQuizStarted(false);
             setQuizTime(timer); // Guardar el tiempo final

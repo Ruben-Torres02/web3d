@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, orderBy, limit, query } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, limit, query, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase.config";
 
 class QuizDAO {
@@ -26,6 +26,18 @@ class QuizDAO {
                 topScores.push(doc.data());
             });
             return topScores;
+        }
+        async deleteAllRecords() {
+            try {
+                const querySnapshot = await getDocs(this.collectionRef);
+                const deletePromises = querySnapshot.docs.map((docSnapshot) =>
+                    deleteDoc(doc(this.collectionRef, docSnapshot.id))
+                );
+                await Promise.all(deletePromises);
+                console.log("All records deleted successfully.");
+            } catch (error) {
+                console.error("Error deleting records: ", error);
+            }
         }
     }
 
