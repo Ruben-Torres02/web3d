@@ -17,10 +17,13 @@ import Tooltip from "../../components/Tooltip/Tooltip";
 import Timer from "../../components/Timer/Timer";
 import quizDAO from "../../daos/quizDAO";
 import useAuthStore from "../../stores/use-auth-store";
+import { useNavigate } from "react-router-dom";
 
 const Test = () => {
 
   const { quizPointsReset, setQuizStarted, quizFinished, quizTime, setQuizFinished } = useQuizTime();
+
+  const navigate = useNavigate();
   const [scores, setScores] = useState([]);
   const { user } = useAuthStore()
   useEffect(() => {
@@ -68,9 +71,15 @@ const Test = () => {
     fetchTopScores(); // Recupera los puntajes al montar el componente
   }, [quizFinished]);
 
+  const nextTest = () => {
+    setQuizFinished(false)
+    alert("¡Felicidades! Has completado el juego.")
+    navigate("/shortage-Test")
+  }
+
   return (
     <>
-      {quizFinished && "Felicidades terminaste"}
+      {quizFinished && nextTest()}
       <div className="tooltip-container">
         <div className="icon">
           <svg
@@ -89,7 +98,7 @@ const Test = () => {
           <ol>
             {scores.map((score, index) => (
               <li key={index}>
-                {score.name} - {score.points} s
+                {score.name} - {score.time} s
               </li>
             ))}
           </ol>

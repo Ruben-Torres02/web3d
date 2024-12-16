@@ -5,10 +5,10 @@ const useQuizTime = create((set) => ({
     setQuizPoints: () =>
         set((state) => ({ quizPoints: state.quizPoints + 1 })),
     quizTime: 0,
-    setQuizTime: (QuizTime) => set({ QuizTime }),
+    setQuizTime: (quizTime) => set({ quizTime }),
     quizStarted: false,
     setQuizStarted: (started) => set({ quizStarted: started }),
-    quizTimeReset: () => set({ QuizTime: 0 }),
+    quizTimeReset: () => set({ quizTime: 0 }),
     quizPointsReset: () => set({ quizPoints: 0 }),
     quizFinished: false,
     setQuizFinished: (finished) => set({ quizFinished: finished }),
