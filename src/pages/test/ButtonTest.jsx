@@ -10,15 +10,7 @@ const ButtonTest = () => {
     };
 
     return (
-        <Html
-            position={[5, 6.2, 0]}
-            className='button-test'
-            transfrom
-        >
-            <Button text={"Siguiente"} onClick={() => handleRedirect("/shortage-Test")} />
-
-
-        </Html>
+        <Button text={"Siguiente"} onClick={() => handleRedirect("/shortage-Test")} />
 
     )
 

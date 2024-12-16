@@ -42,8 +42,9 @@ const FireMoisturizer = (props) => {
   });
 
   return (
-    <group {...props} dispose={null} rotation={[Math.PI / 20, 5, 0]} onClick={handleClick}>
+    <group {...props} dispose={null} rotation={[Math.PI / 20, 5, 0]} >
       <mesh
+      onClick={handleClick} 
         castShadow
         receiveShadow
         geometry={nodes.FireMoisturizer.geometry}

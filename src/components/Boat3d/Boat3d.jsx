@@ -1,82 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useGLTF, useKeyboardControls } from '@react-three/drei'
-import { RigidBody } from '@react-three/rapier'
-import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
-
-
-function lerp(start, end, t) {
-  return start + (end - start) * t;
-}
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 export function Boat3d(props) {
   const { nodes, materials } = useGLTF('/models-3d/boat.glb');
-  const ref = useRef(); // Referencia al cuerpo rígido del barco
-  const [direction, setDirection] = useState(new THREE.Vector3(0, 0, 0));
-  const [sub, get] = useKeyboardControls();
-  const speed = 0.06;// Velocidad constante del barco 
-
-  useEffect(() => {
-    const unsubscribe = sub(({ forward, backward, left, right }) => {
-      const newDirection = new THREE.Vector3(0, 0, 0);
-
-      // Invertir el comportamiento de 'W' y 'S'
-      if (forward) {
-        newDirection.z = -1; // Movimiento hacia atrás
-      }
-      if (backward) {
-        newDirection.z = 1; // Movimiento hacia adelante
-      }
-      if (left) {
-        newDirection.x = -1; // Movimiento a la izquierda
-      }
-      if (right) {
-        newDirection.x = 1; // Movimiento a la derecha
-      }
-
-      // Normaliza el vector de dirección para mantener la velocidad constante
-      if (newDirection.length() > 0) {
-        newDirection.normalize().multiplyScalar(speed);
-      }
-
-      setDirection(newDirection);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [sub]);
-
-  useFrame(() => {
-    if (ref.current) {
-      // Actualiza la posición del barco
-      ref.current.position.x += direction.x;
-      ref.current.position.z += direction.z;
-      
-      console.log(ref.current.position.x, "X")
-      console.log(ref.current.position.z, "Z")
-      // Verifica si el barco está fuera de los límites del océano
-      const minX = -40; // Límite mínimo en X
-      const maxX = 10;  // Límite máximo en X
-      const minZ = -40; // Límite mínimo en Z
-      const maxZ = 8;  // Límite máximo en Z
-
-      if (ref.current.position.x < minX || ref.current.position.x > maxX ||
-        ref.current.position.z < minZ || ref.current.position.z > maxZ) {
-        // Si se sale de los límites, regresa a la posición de inicio
-        ref.current.position.set(0, 0, 0); // Ajusta esto a la posición inicial deseada
-      }
-
-      // Rota el barco en la dirección del movimiento
-      if (direction.x !== 0 || direction.z !== 0) {
-        const angle = Math.atan2(direction.z, direction.x);
-        ref.current.rotation.y = lerp(ref.current.rotation.y, -angle, 0.1);
-      }
-    }
-  });
   return (
     <>
-      <group ref={ref} {...props} dispose={null}>
+      <group {...props} dispose={null}>
         <mesh
           castShadow
           receiveShadow
