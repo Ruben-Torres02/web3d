@@ -7,7 +7,6 @@ export default function Timer() {
     const [timer, setTimer] = useState(0);
     const {
         quizPoints,
-        setQuizPoints,
         quizTime,
         setQuizTime,
         quizStarted,

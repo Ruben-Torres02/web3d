@@ -1,19 +1,16 @@
 import { Canvas } from "@react-three/fiber";
-import { KeyboardControls, Loader, OrbitControls, Sky, Text, Text3D } from "@react-three/drei";
+import { KeyboardControls, Loader, Sky} from "@react-three/drei";
 import { Suspense, useEffect, useState } from "react";
 import ButtonGoBack from "../../components/ButtonGoBack/ButtonGoBack";
 import { Physics } from "@react-three/rapier";
 import { Ocean3d } from "../../components/Ocean3d/Ocean3d";
-import PostProcessing from "../../components/PostProcessing/PostProcesing";
 import { CrushedBottle } from "../../components/CrushedBottle/CrushedBottle";
 import { GreenPuddle } from "../../components/GreenPuddle/GreenPuddle";
-import { BlackPuddle } from "../../components/BlackPuddle/BlackPuddle";
 import { generateRandomX, generateRandomZ } from "../../utils/randomNumber";
 import { Boat3d } from "../../components/Boat3d/Boat3d";
 import Ecctrl from 'ecctrl'
 import useQuizTime from "../../stores/use-time-store";
 import { OldBarrel } from "../../components/OldBarrel/OldBarrel";
-import Tooltip from "../../components/Tooltip/Tooltip";
 import Timer from "../../components/Timer/Timer";
 import quizDAO from "../../daos/quizDAO";
 import useAuthStore from "../../stores/use-auth-store";
@@ -76,9 +73,35 @@ const Test = () => {
     alert("¡Felicidades! Has completado el juego.")
     navigate("/shortage-Test")
   }
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   return (
     <>
+      {isModalOpen && (
+        <div className="modal-overlay1">
+          <div className="modal-content1">
+            <h2>¡Bienvenido al desafío de limpieza del océano! 🌊</h2>
+            <p>
+            En este mini juego, tu misión será ayudar a limpiar el océano recolectando toda la basura que contamina sus aguas. Pon a prueba tu velocidad y habilidades, ¡y obtén un reconocimiento especial al completar la tarea en el menor tiempo posible!
+            <br/>
+            Controles:
+            <br/>
+            
+            Usa las flechas del teclado o las teclas W, A, S, D para moverte.
+            <br/>
+            
+            Pulsa Mayús para moverte más rápido.
+            
+            <br/>
+            Cuando estés listo, ¡pulsa "Comenzar"! El juego empezará en cuanto recojas tu primera pieza de basura.
+            <br/>
+            
+            ¡Buena suerte, héroe del océano! 🌟
+            </p>
+            <button onClick={() => setIsModalOpen(false)}>Comenzar</button>
+          </div>
+        </div>
+      )}
       {quizFinished && nextTest()}
       <div className="tooltip-container">
         <div className="icon">
